@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Avishka Kehan | Portfolio</title>
+    <script src ="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     
     <style>
@@ -13,6 +14,32 @@
             --text-color: #333;
         }
 
+        .dark-mode {
+            background-color: #121212 !important;
+            color: #ffffff !important;
+        }
+        .dark-mode section, 
+        .dark-mode .project-card, 
+        .dark-mode .contact-info, 
+        .dark-mode .skill-badge {
+            background-color: #1e1e1e !important;
+            color: #ffffff !important;
+            border-color: #333;
+        }
+        .theme-switch {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+            cursor: pointer;
+            background: var(--primary-color);
+            color: white;
+            padding: 10px 15px;
+            border-radius: 50px;
+            font-size: 1.2rem;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            border: 2px solid white;
+        }
         body {
             font-family: 'Poppins', sans-serif;
             background: var(--secondary-color);
@@ -136,10 +163,10 @@
     </style>
 </head>
 <body>
-
+<div class="theme-switch" onclick="toggleTheme()" id="themeBtn">🌓 Dark Mode</div>
     <header>
         <h1>AVISHKA KEHAN</h1>
-        <p>Beginner Of The Software Engineering  | Data Entry </p>
+        <p>I am a <span id="typed" style="color: #ffcc00; font-weight: bold;"></span></p>
     </header>
 
     <section id="about">
@@ -188,6 +215,25 @@
     <footer>
         <p>&copy; 2026 Avishka Kehan | Built with  for My self</p>
     </footer>
+    <script>
+        var typed = new Typed('#typed', {
+                strings: ['Software Engineering Student.', 'Web Developer.', 'Python Enthusiast.'],
+                typeSpeed: 60,
+                backSpeed: 40,
+                loop: true
+            });
+
+    function toggleTheme(){
+        var element = document.body;
+        element.classList.toggle("dark-mode");
+        var btn = document.getElementById("themeBtn");
+            if (element.classList.contains("dark-mode")) {
+                btn.innerHTML = "☀️ Light Mode";
+            } else {
+                btn.innerHTML = "🌓 Dark Mode";
+            }
+    }
+    </script>
 
 </body>
 </html>
