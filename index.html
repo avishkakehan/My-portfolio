@@ -93,7 +93,7 @@
             transition: transform 0.3s ease;
         }
 
-        .profile:hover { transform: scale(1.05); } /* Hover effect */
+        .profile:hover { transform: scale(1.05); } 
 
         .about-text { text-align: center; font-size: 1.1rem; }
 
@@ -106,21 +106,42 @@
         }
 
        
-        .skills-container {
+        .bubble-container {
             display: flex;
             flex-wrap: wrap;
-            gap: 10px;
             justify-content: center;
+            gap: 20px;
+            padding: 20px;
         }
 
-        .skill-badge {
-            background: white;
-            padding: 8px 15px;
-            border-radius: 20px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-            font-weight: 600;
+        .bubble {
+            background: rgb(204, 201, 201);
             color: var(--primary-color);
+            padding: 15px 25px;
+            border-radius: 50px;
+            font-weight: 600;
+            box-shadow: 0 5px 15px rgba(0, 119, 204, 0.1);
+            border: 2px solid transparent;
+            transition: 0.3s;
+            animation: float 3s ease-in-out infinite;
         }
+        .bubble:nth-child(even) { animation-delay: 1s; }
+        .bubble:nth-child(3n) { animation-delay: 1.5s; }
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+        .bubble:hover {
+        border-color: var(--primary-color);
+        transform: scale(1.1) translateY(-10px) !important;
+        box-shadow: 0 10px 20px rgba(0, 119, 204, 0.2);
+        }
+        .dark-mode .bubble {
+        background: #1e1e1e;
+        color: #fff;
+        box-shadow: 0 5px 15px rgba(255, 255, 255, 0.05);
+        }
+
 
         .projects-grid {
             display: grid;
@@ -194,12 +215,15 @@
             <p>Hi, I'm Avishka, a passionate beginner Web Developer and a <b>Software Engineering</b> undergraduate at ESOFT.  I love building clean, functional websites and managing data efficiently.</p>
         </div>
         
-        <div class="skills-container">
-            <div class="skill-badge">HTML5</div>
-            <div class="skill-badge">CSS3</div>
-            <div class="skill-badge">Python</div>
-            <div class="skill-badge">MySQL</div>
-            <div class="skill-badge">Data Management</div>
+        <div class="skills-showcase">
+            <h2>My Tech Stack</h2>
+            <div class="bubble-container">
+                <div class="bubble">HTML5</div>
+                <div class="bubble">CSS3</div>
+                <div class="bubble">Python</div>
+                <div class="bubble">MySQL</div>
+                <div class="bubble">Data Management</div>
+            </div>
         </div>
     </section>
 
