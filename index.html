@@ -6,6 +6,7 @@
     <title>Avishka Kehan | Portfolio</title>
     <script src ="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/scrollreveal"></script>
     
     <style>
         :root {
@@ -16,7 +17,7 @@
 
         .dark-mode {
             background-color: #121212 !important;
-            color: #ffffff !important;
+            color:#e0e0e0 !important;
         }
         .dark-mode section, 
         .dark-mode .project-card, 
@@ -95,7 +96,20 @@
 
         .profile:hover { transform: scale(1.05); } 
 
-        .about-text { text-align: center; font-size: 1.1rem; }
+        .about-text { 
+            text-align: center; 
+            font-size: 1.1rem; 
+            max-width: 700px;
+            margin: 40px auto;    
+        }
+        .about-text p{
+            font-size: 1.2rem;
+            line-height: 1.6;
+            color: var(--text-color);
+        }
+        .dark-mode .about-text p {
+            color: #e0e0e0 !important;
+        }
 
         h2 {
             border-bottom: 3px solid var(--primary-color);
@@ -275,6 +289,14 @@
                 btn.innerHTML = "🌓 Mode";
             }
     }
+    ScrollReveal().reveal('.about-text', {
+        delay: 400,         
+        distance: '60px',    
+        origin: 'bottom',    
+        duration: 1500,      
+        opacity: 0,          
+        easing: 'cubic-bezier(0.5, 0, 0, 1)' 
+    });
     </script>
 
 </body>
