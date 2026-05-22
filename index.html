@@ -323,68 +323,72 @@
     <footer>
         <p>&copy; 2026 Avishka Kehan | Built with  for My self</p>
     </footer>
-    <script>
-
-        var typed = new Typed('#typed', {
-                strings: ['Software Engineering Student.', 'Web Developer.', 'Python Enthusiast.'],
-                typeSpeed: 60,
-                backSpeed: 40,
-                loop: true
-            });
-
+<script>
     function toggleTheme(){
         var element = document.body;
         element.classList.toggle("dark-mode");
         var btn = document.getElementById("themeBtn");
-            if (element.classList.contains("dark-mode")) {
-                btn.innerHTML = "☀️ Mode";
-            } else {
-                btn.innerHTML = "🌓 Mode";
-            }
+        if (element.classList.contains("dark-mode")) {
+            btn.innerHTML = "☀️ Mode";
+        } else {
+            btn.innerHTML = "🌓 Mode";
+        }
     }
-    ScrollReveal().reveal('.about-text', {
-        delay: 400,         
-        distance: '60px',    
-        origin: 'bottom',    
-        duration: 4500,      
-        opacity: 0,          
-        easing: 'cubic-bezier(0.5, 0, 0, 1)' 
-    });
 
-document.addEventListener("DOMContentLoaded", () => {
-        const line1Text = "..HELLOw.."; 
+   
+    document.addEventListener("DOMContentLoaded", () => {
+        const line1Text = "HELLO";
         const line2Text = "WELCOME TO MY PORTFOLIO";
         
         const line1Container = document.getElementById("line1");
         const line2Container = document.getElementById("line2");
         
-        
+   
         line1Container.innerHTML = line1Text.split("").map((letter, index) => {
             const char = letter === " " ? "&nbsp;" : letter;
             return `<span style="animation-delay: ${index * 0.15}s">${char}</span>`;
         }).join("");
 
-        
         const line2StartDelay = line1Text.length * 150; 
 
-        
         line2Container.innerHTML = line2Text.split("").map((letter, index) => {
             const char = letter === " " ? "&nbsp;" : letter;
             return `<span style="animation-delay: ${(line2StartDelay / 1000) + (index * 0.12)}s">${char}</span>`;
         }).join("");
 
-        
         const totalAnimationTime = line2StartDelay + (line2Text.length * 120) + 1200; 
 
-       
+     
         setTimeout(() => {
             const preloader = document.getElementById('preloader');
             if (preloader) {
                 preloader.classList.add('preloader-hidden'); 
             }
+
+            startPageAnimations();
+
         }, totalAnimationTime);
     });
-    </script>
 
+
+    function startPageAnimations() {
+      
+        new Typed('#typed', {
+            strings: ['Software Engineering Student.', 'Web Developer.', 'Python Enthusiast.'],
+            typeSpeed: 60,
+            backSpeed: 40,
+            loop: true
+        });
+
+        ScrollReveal().reveal('.about-text', {
+            delay: 200, 
+            distance: '60px',    
+            origin: 'bottom',    
+            duration: 2500,      
+            opacity: 0,          
+            easing: 'cubic-bezier(0.5, 0, 0, 1)' 
+        });
+    }
+</script>
 </body>
 </html>
