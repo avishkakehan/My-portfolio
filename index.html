@@ -1,394 +1,176 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Avishka Kehan | Portfolio</title>
-    <script src ="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-    <script src="https://unpkg.com/scrollreveal"></script>
-    
-    <style>
-        #preloader {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100vh;
-            background-color: #0c0c0c;
-            z-index: 99999;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            transition: opacity 0.6s ease , visibility 0.6s ease;
-        }
-        .welcome-text{
-            font-family: 'Courier New', Courier, monospace;
-            font-size: 1.8rem;
-            font-weight: 600;
-            color: #ffffff;
-            letter-spacing: 5px;
-            text-transform: uppercase;
-            text-align: center;
-            padding: 0 20px;
-            line-height: 1.8;
-        }
-        .welcome-text span {
-            opacity: 0;
-            display: inline-block;
-            animation: fade-in-letter 0.2s forwards;
-            text-shadow: 0 0 10px rgba(0, 119, 204, 0.6);
-        }
-        .welcome-text .sub-text{
-            font-size: 1.4rem; 
-            color: #cccccc;
-        }
-        @keyframes fade-in-letter {
-            to {
-                opacity: 1;
-            }
-        }
-        .preloader-hidden {
-            opacity: 0;
-            visibility: hidden;
-        }
-        @media (max-width: 600px) {
-            .welcome-text { font-size: 1.2rem; letter-spacing: 2px; }
-            .welcome-text .sub-text { font-size: 0.9rem; }
-        }
-        :root {
-            --primary-color: #0077cc;  
-            --secondary-color: #f0f4f8;
-            --text-color: #333;
-        }
-
-        .dark-mode {
-            background-color: #121212 !important;
-            color:#e0e0e0 !important;
-        }
-        .dark-mode section, 
-        .dark-mode .project-card, 
-        .dark-mode .contact-info, 
-        .dark-mode .skill-badge {
-            background-color: #0c0c0c !important;
-            color: #ffffff !important;
-            border-color: #333;
-        }
-        .theme-switch {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            z-index: 1000;
-            cursor: pointer;
-            background: var(--primary-color);
-            color: white;
-            padding: 10px 15px;
-            border-radius: 50px;
-            font-size: 1.2rem;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-            border: 2px solid white;
-        }
-        @media (max-width: 600px) {
-        .theme-switch {
-            top: 15px;         
-            bottom:auto;      
-            right: 10px;       
-            padding: 5px 10px; 
-            font-size: 0.9rem; 
-            border-radius: 10px; 
-            }
-        }
-        .dark-mode header {
-            background: #3e3c3c !important; 
-            box-shadow: 0 4px 10px rgba(0,0,0,0.5);
-        }
-        .dark-mode header h1 {
-            color: #4dabff !important;
-        }
-
-        body {
-            font-family: 'Poppins', sans-serif;
-            background: var(--secondary-color);
-            margin: 0;
-            color: var(--text-color);
-            line-height: 1.6;
-        }
-
-        header {
-            background: var(--primary-color);
-            color: white;
-            padding: 40px 20px;
-            text-align: center;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-        }
-
-        header h1 { margin: 0; font-size: 2.2rem; letter-spacing: 2px; padding-top: 40px; }
-
-        section {
-            padding: 40px 20px;
-            max-width: 900px;
-            margin: auto;
-        }
-
-        .profile {
-            width: 200px;
-            height: auto;
-            border-radius: 10%; 
-            border: 5px solid white;
-            display: block;
-            margin: -80px auto 20px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-            transition: transform 0.3s ease;
-        }
-
-        .profile:hover { transform: scale(1.05); } 
-
-        .about-text { 
-            text-align: center; 
-            font-size: 1.1rem; 
-            max-width: 700px;
-            margin: 40px auto;    
-        }
-        .about-text p{
-            font-size: 1.2rem;
-            line-height: 1.6;
-            color: var(--text-color);
-        }
-        .dark-mode .about-text p {
-            color: #e0e0e0 !important;
-        }
-
-        h2 {
-            border-bottom: 3px solid var(--primary-color);
-            display: inline-block;
-            padding-bottom: 5px;
-            margin-bottom: 25px;
-            color: var(--primary-color);
-        }
-
-       
-        .bubble-container {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 20px;
-            padding: 20px;
-        }
-
-        .bubble {
-            background: rgb(204, 201, 201);
-            color: var(--primary-color);
-            padding: 15px 25px;
-            border-radius: 50px;
-            font-weight: 600;
-            box-shadow: 0 5px 15px rgba(0, 119, 204, 0.1);
-            border: 2px solid transparent;
-            transition: 0.3s;
-            animation: float 3s ease-in-out infinite;
-        }
-        .bubble:nth-child(even) { animation-delay: 1s; }
-        .bubble:nth-child(3n) { animation-delay: 1.5s; }
-        @keyframes float {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
-        }
-        .bubble:hover {
-        border-color: var(--primary-color);
-        transform: scale(1.1) translateY(-10px) !important;
-        box-shadow: 0 10px 20px rgba(0, 119, 204, 0.2);
-        }
-        .dark-mode .bubble {
-        background: #1e1e1e;
-        color: #fff;
-        box-shadow: 0 5px 15px rgba(255, 255, 255, 0.05);
-        }
-
-
-        .projects-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-        }
-
-        .project-card {
-            background: white;
-            padding: 20px;
-            border-radius: 15px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-            transition: 0.3s;
-            border-left: 5px solid var(--primary-color);
-        }
-
-        .project-card:hover { transform: translateY(-5px); }
-
-        form {
-            background: white;
-            padding: 30px;
-            border-radius: 15px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-        }
-
-        input, textarea {
-            width: 100%;
-            padding: 12px;
-            margin-bottom: 15px;
-            border-radius: 8px;
-            border: 1px solid #ddd;
-            box-sizing: border-box;
-        }
-
-        button {
-            background: var(--primary-color);
-            color: white;
-            border: none;
-            padding: 12px 30px;
-            border-radius: 25px;
-            cursor: pointer;
-            font-size: 1rem;
-            font-weight: 600;
-            width: 100%;
-            transition: 0.3s;
-        }
-
-        button:hover { background: #005fa3; letter-spacing: 1px; }
-
-        footer {
-            text-align: center;
-            background: #222;
-            color: #ccc;
-            padding: 20px;
-            margin-top: 50px;
-            font-size: 0.9rem;
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Portfolio of Avishka Kehan — IT student and aspiring software developer.">
+<title>Avishka Kehan | Portfolio</title>
+<script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
 </head>
-<body class="dark-mode">
-    <div id="preloader">
-        <div class="welcome-text">
-            <div id="line1"></div><div id="line2" class="sub-text"></div>
-        </div>
-    </div>
-    <div class="theme-switch" onclick="toggleTheme()" id="themeBtn">☀️ Mode</div>
-    <header>
-        <h1>AVISHKA KEHAN</h1>
-        <p>I am a <span id="typed" style="color: #ffcc00; font-weight: bold;"></span></p>
-    </header>
+<body>
 
-    <section id="about">
-        <img src="avish.jpeg" class="profile" alt="Avishka Kehan">
-        <div class="about-text">
-            <h2>About Me</h2>
-            <p>Hi, I'm Avishka, a passionate beginner Web Developer and a <b>Software Engineering</b> undergraduate at ESOFT.  I love building clean, functional websites and managing data efficiently.</p>
+<a href="#about" class="skip-link">Skip to content</a>
+
+<nav>
+    <div class="logo">AVISHKA<span>.</span></div>
+    <button id="navToggle" class="nav-toggle" aria-label="Toggle menu" aria-expanded="false">☰</button>
+    <ul id="navMenu">
+        <li><a href="#about">About</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#project">Projects</a></li>
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="#journey">Journey</a></li>
+        <li><a href="#contact">Contact</a></li>
+    </ul>
+    <button class="theme-btn" onclick="toggleTheme()" id="themeBtn" aria-label="Toggle dark mode">🌙</button>
+</nav>
+
+<header>
+    <div class="hero">
+        <div class="hero-text">
+            <p class="hero-tag">IT STUDENT · ASPIRING SOFTWARE DEVELOPER</p>
+            <h1>AVISHKA KEHAN</h1>
+            <p>I am a <span id="typed"></span></p>
+            <p class="hero-desc">Software Engineering undergraduate at ESOFT and IT Intern at Sterling Steels Pvt Ltd. I enjoy programming, troubleshooting, and building practical projects to grow as a developer.</p>
+            <div class="hero-btns">
+                <a href="#project" class="btn btn-primary">View Projects</a>
+                <a href="#contact" class="btn btn-outline">Contact Me</a>
+            </div>
         </div>
-        
-        <div class="skills-showcase">
-            <h2>My Tech Stack</h2>
+        <img src="avish.jpeg" class="hero-img" alt="Avishka Kehan">
+    </div>
+</header>
+
+<section id="about">
+    <h2>About Me</h2>
+    <div class="about-text">
+        <p>Hi, I'm <b>Avishka Kehan</b>, an IT student at ESOFT Software Engineering campus currently working as an <b>IT Intern at Sterling Steels Pvt Ltd</b>. I'm building my skills in programming, web development, and IT support through real-world tasks and personal projects. My goal is to grow into a confident software developer and keep learning every day.</p>
+    </div>
+
+    <h2 id="skills">My Skills</h2>
+    <div class="skills-grid">
+        <div class="card skill-group">
+            <h3>Programming</h3>
             <div class="bubble-container">
+                <div class="bubble">Python</div>
                 <div class="bubble">HTML5</div>
                 <div class="bubble">CSS3</div>
-                <div class="bubble">Python</div>
+            </div>
+        </div>
+        <div class="card skill-group">
+            <h3>Desktop Development</h3>
+            <div class="bubble-container">
+                <div class="bubble">PySide6</div>
+                <div class="bubble">Tkinter</div>
+            </div>
+        </div>
+        <div class="card skill-group">
+            <h3>Databases</h3>
+            <div class="bubble-container">
                 <div class="bubble">MySQL</div>
+                <div class="bubble">MongoDB</div>
+            </div>
+        </div>
+        <div class="card skill-group">
+            <h3>IT & Troubleshooting</h3>
+            <div class="bubble-container">
+                <div class="bubble">IT Support</div>
+                <div class="bubble">Basic Hardware Knowledge</div>
                 <div class="bubble">Data Management</div>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
-    <section id="project">
-        <h2>My Projects</h2>
-        <div class="projects-grid">
-            <div class="project-card">
-                <h3>Personal Portfolio</h3>
-                <p>A professional responsive website created to showcase my skills and projects using HTML and CSS.</p>
-            </div>
-            <div class="project-card">
-                <h3>SmartTask Managment System</h3>
-                <p>A web application built with <b>Flask (Python)</b> and <b>MySQL</b> database. It features task prioritization, deadline tracking, and a dynamic dashboard for efficient workflow management.</p>
-            </div>
+<section id="project">
+    <h2>My Projects</h2>
+    <div class="projects-grid">
+        <div class="card project-card">
+            <h3>Personal Portfolio</h3>
+            <p>A professional responsive website created to showcase my skills and projects using HTML and CSS.</p>
+            <div class="chips"><span>HTML</span><span>CSS</span><span>JavaScript</span></div>
         </div>
-    </section>
+        <div class="card project-card">
+            <h3>SmartTask Management System</h3>
+            <p>A web application built with Flask (Python) and MySQL. It features task prioritization, deadline tracking, and a dynamic dashboard.</p>
+            <div class="chips"><span>Python</span><span>Flask</span><span>MySQL</span></div>
+        </div>
+        <div class="card project-card">
+            <h3>PDF Editor</h3>
+            <p>A desktop application for editing PDF files, built with Python and the PySide6 GUI framework.</p>
+            <div class="chips"><span>Python</span><span>PySide6</span></div>
+        </div>
+    </div>
+</section>
 
-    <section id="contact">
-        <h2>Let's Connect</h2>
-    <div class="contact-container" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px;">
-        
-        <div class="contact-info" style="background: white; padding: 20px; border-radius: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.05);">
+<section id="experience">
+    <h2>Experience</h2>
+    <div class="card exp-card">
+        <div class="exp-head">
+            <h3>IT Intern</h3>
+            <span class="exp-badge">Present</span>
+        </div>
+        <p class="exp-company">Sterling Steels Pvt Ltd</p>
+        <ul>
+            <li>Support day-to-day IT operations across the organization</li>
+            <li>Troubleshoot hardware, software, and network issues reported by staff</li>
+            <li>Assist with basic hardware maintenance and user support</li>
+        </ul>
+    </div>
+</section>
+
+<section id="journey">
+    <h2>My Learning Journey</h2>
+    <div class="timeline">
+        <div class="timeline-item">
+            <h3>Currently Learning</h3>
+            <p>Programming fundamentals with Python, building desktop apps with PySide6 and Tkinter, and strengthening MySQL & MongoDB skills.</p>
+        </div>
+        <div class="timeline-item">
+            <h3>Building Practical Projects</h3>
+            <p>Hands-on projects like a SmartTask Management System (Flask + MySQL) and a PDF Editor (Python + PySide6) to apply what I learn.</p>
+        </div>
+        <div class="timeline-item">
+            <h3>Goal</h3>
+            <p>To grow into a confident software developer, ready for IT internships and junior developer roles.</p>
+        </div>
+    </div>
+</section>
+
+<section id="contact">
+    <h2>Let's Connect</h2>
+    <div class="contact-grid">
+        <div class="card contact-info">
             <p><b>Email:</b> kehanavishka@gmail.com</p>
             <p><b>Phone:</b> 075 457 7899 / 072 048 6055</p>
-            <p><b>Location:</b> Pattiwila,Gonawala,Kelaniya</p>
-           
+            <p><b>Location:</b> Pattiwila, Gonawala, Kelaniya</p>
+            <div class="socials">
+                <a href="https://github.com/avishkakehan" target="_blank" rel="noopener">GitHub</a>
+                <a href="https://www.linkedin.com/in/avishka-kehan-579608397/" target="_blank" rel="noopener">LinkedIn</a>
+                <a href="mailto:kehanavishka@gmail.com">Email</a>
+            </div>
         </div>
+        <form class="card" action="mailto:kehanavishka@gmail.com" method="post" enctype="text/plain">
+            <input type="text" name="name" placeholder="Your Name" required>
+            <input type="email" name="email" placeholder="Your Email" required>
+            <textarea name="message" rows="4" placeholder="Your Message" required></textarea>
+            <button type="submit">Send Message</button>
+        </form>
+    </div>
+</section>
 
-    </section>
+<footer>
+    <div class="footer-links">
+        <a href="https://github.com/avishkakehan" target="_blank" rel="noopener">GitHub</a> ·
+        <a href="https://www.linkedin.com/in/avishka-kehan-579608397/" target="_blank" rel="noopener">LinkedIn</a> ·
+        <a href="mailto:kehanavishka@gmail.com">Email</a>
+    </div>
+    <p>&copy; 2026 Avishka Kehan | Built with ❤️</p>
+</footer>
 
-    <footer>
-        <p>&copy; 2026 Avishka Kehan | Built with  for My self</p>
-    </footer>
-<script>
-    function toggleTheme(){
-        var element = document.body;
-        element.classList.toggle("dark-mode");
-        var btn = document.getElementById("themeBtn");
-        if (element.classList.contains("dark-mode")) {
-            btn.innerHTML = "☀️ Mode";
-        } else {
-            btn.innerHTML = "🌓 Mode";
-        }
-    }
+<script src="script.js"></script>
 
-   
-    document.addEventListener("DOMContentLoaded", () => {
-        const line1Text = "HELLO";
-        const line2Text = "WELCOME TO MY PORTFOLIO";
-        
-        const line1Container = document.getElementById("line1");
-        const line2Container = document.getElementById("line2");
-        
-   
-        line1Container.innerHTML = line1Text.split("").map((letter, index) => {
-            const char = letter === " " ? "&nbsp;" : letter;
-            return `<span style="animation-delay: ${index * 0.15}s">${char}</span>`;
-        }).join("");
-
-        const line2StartDelay = line1Text.length * 150; 
-
-        line2Container.innerHTML = line2Text.split("").map((letter, index) => {
-            const char = letter === " " ? "&nbsp;" : letter;
-            return `<span style="animation-delay: ${(line2StartDelay / 1000) + (index * 0.12)}s">${char}</span>`;
-        }).join("");
-
-        const totalAnimationTime = line2StartDelay + (line2Text.length * 120) + 1200; 
-
-     
-        setTimeout(() => {
-            const preloader = document.getElementById('preloader');
-            if (preloader) {
-                preloader.classList.add('preloader-hidden'); 
-            }
-
-            startPageAnimations();
-
-        }, totalAnimationTime);
-    });
-
-
-    function startPageAnimations() {
-      
-        new Typed('#typed', {
-            strings: ['Software Engineering Student.', 'Web Developer.', 'Python Enthusiast.'],
-            typeSpeed: 60,
-            backSpeed: 40,
-            loop: true
-        });
-
-        ScrollReveal().reveal('.about-text', {
-            delay: 200, 
-            distance: '60px',    
-            origin: 'bottom',    
-            duration: 2500,      
-            opacity: 0,          
-            easing: 'cubic-bezier(0.5, 0, 0, 1)' 
-        });
-    }
-</script>
 </body>
 </html>
